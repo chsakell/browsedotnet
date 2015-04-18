@@ -1,0 +1,33 @@
+﻿@model BrowseDotNet.Web.Models.SnippetViewModel
+
+@{
+    ViewBag.Title = "BrowseDotNET";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h2>@Model.Name<small> @Model.ProgrammingLanguageName</small></h2>
+    </div>
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Snippets", "Index", "Snippets")</li>
+        <li class="active">@Model.Name</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-md-12">
+            <?prettify linenums=true?>
+<pre class="prettyprint" id="quine" style="border:4px solid #88c">
+    @Model.Code
+</pre>
+        </div>
+    </div>
+
+</div>
+
+@section scripts
+{
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+}

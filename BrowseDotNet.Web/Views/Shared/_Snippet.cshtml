@@ -1,0 +1,24 @@
+﻿@model BrowseDotNet.Web.Models.SnippetViewModel
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion"
+               href="#@Model.ID">
+                @Model.Name [@Model.ProgrammingLanguageName]
+            </a>
+        </h4>
+    </div>
+    <div id="@Model.ID" class="panel-collapse collapse">
+        <div class="panel-body">
+            <?prettify linenums=true?>
+        <pre class="prettyprint" id="quine" style="border:4px solid #88c">
+            @Model.Code
+        </pre>
+        </div>
+        <div class="panel-footer panel-success">
+            <a href="@Url.Action("Code", "Snippets", new { id = Model.ID })" target="_blank">@Model.Description</a>
+            <a href="@Url.Action("Group", "Snippets", new { group = Model.GroupName })" target="_blank">@Model.GroupName</a>
+        </div>
+    </div>
+</div>

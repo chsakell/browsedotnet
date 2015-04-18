@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+
+    <div class="row">
+        <div class="page-header">
+            <h1>Manage <small>Manage Solutions types and Programming Languages</small></h1>
+        </div>
+
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Manage</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="@Url.Content("~/content/images/languages.jpg")" alt="Categories">
+                <div class="caption">
+                    <h3>Programming Languages</h3>
+                    <p>View, Edit or Remove programming languages for you snippets in BrowseDotNET.</p>
+                    <p><a href="@Url.Action("Languages")" class="btn btn-primary" role="button">View All</a> 
+                    <a href="@Url.Action("CreateLanguage")" class="btn btn-default" role="button">Create New</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="@Url.Content("~/content/images/microsoft.jpg")" alt="Products">
+                <div class="caption">
+                    <h3>Software Application Types</h3>
+                    <p>View, Edit or Remove application types for your registered solutions</p>
+                    <p><a href="@Url.Action("SolutionTypes")" class="btn btn-primary" role="button">View All</a> 
+                    <a href="@Url.Action("CreateSolutionType", "Settings")" class="btn btn-default" role="button">Create New</a></p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>

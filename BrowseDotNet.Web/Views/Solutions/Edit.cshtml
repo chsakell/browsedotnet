@@ -1,0 +1,213 @@
+﻿@model BrowseDotNet.Web.Models.SolutionViewModel
+
+@{
+    ViewBag.Title = "BrowseDotNET";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Solutions","Index","Solutions")</li>
+            <li class="active">@Model.Name</li>
+        </ol>
+        <h2>Update .NET Solution</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID)
+
+                    <ul id="solutiontab" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#basicinfo" data-toggle="tab">Basic Info</a>
+                        </li>
+                        <li>
+                            <a href="#searchinfo" data-toggle="tab">Search Info</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content well" style="padding-top:20px">
+
+                        <div id="basicinfo" class="tab-pane active">
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SolutionTypeID, new { @class = "control-label col-md-2" })
+                                @Html.HiddenFor(model => model.SolutionTypeID, new { @Value = "1" })
+                                <div class="col-md-10">
+                                    <div id="solutionTypes" class="dropdown">
+                                        <button id="solutiontypebutton" class="btn btn-sm btn-info" data-toggle="dropdown">@ViewBag.SelectedType.SolutionTypeType</button>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var item in ViewBag.SolutionTypeID)
+                                            {
+                                                <li>
+                                                    <a href="#" tabindex="-1" data-value="@item.Value">@item.Text</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @*<input type="file" id="fileDialog" style="visibility:hidden; position:absolute"/>*@
+                                @Html.LabelFor(model => model.FilePath, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.FilePath, new { htmlAttributes = new { @class = "form-control" }, @style = "width:400px" })
+                                    @Html.ValidationMessageFor(model => model.FilePath, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="searchinfo" class="tab-pane">
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Keys, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Keys, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Keys, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Update" class="btn btn-primary btn-sm" /> or
+                            @Html.ActionLink("Cancel", "Index", "Home")
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-4">
+            <section>
+                <h4>.NET Solution Registration.</h4>
+                <hr />
+                <div>
+                    <p>
+                        @*Enter appropriate values for your Solution. The Solution Path value must be the file path to the solution file.*@
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionOne">
+                                            Author
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Application's author.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionTwo">
+                                            Solution Path
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionTwo" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        Solution's file path that you want to register. Paste the file path with the .sln extension as well.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionThree">
+                                            Keys
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionThree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Enter comma separated key terms for registered solution. Key terms are used for faster solution search results.
+                                        Example keys are technologies or patterns used for the solution, for example <i>Bootrap</i>,<i>Dependency Injection</i>, etc..
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionFour">
+                                            Website
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        If solution is connected to a source control such as Github, enter it's website URL.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $('body').on("click", '#solutionTypes li a', function () {
+            var $this = $(this);
+            var type = $this.data('value');
+            var typeName = $this.text();
+            $('#SolutionTypeID').val(type);
+            $('#solutiontypebutton').text(typeName);
+        });
+    </script>
+}

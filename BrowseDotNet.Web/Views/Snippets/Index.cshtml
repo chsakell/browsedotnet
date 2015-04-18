@@ -1,0 +1,122 @@
+﻿@model IEnumerable<BrowseDotNet.Web.Models.SnippetViewModel>
+
+@{
+    ViewBag.Title = "BrowseDotNET";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h2>Registered Code Snippets <small>Search, Open or Edit Code Snippets</small></h2>
+    </div>
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li class="active">Snippets</li>
+    </ol>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GroupName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Website)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProgrammingLanguageName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name, "Edit", new { @id = item.ID })
+                </td>
+                <td>
+                    @Html.ActionLink(item.GroupName, "Group", new { @group = item.GroupName })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Website))
+                    {
+                        <a href="@item.Website" target="_blank">@item.Website</a>
+                    }
+                    else
+                    { <span>Not available</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProgrammingLanguageName)
+                </td>
+                <td>
+                    @Html.ActionLink("Code","Code", "Snippets", new { id = item.ID }, new { @class = "btn btn-primary btn-xs" })
+                    <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteConfirmationModal" data-name="@item.Name" data-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Deletion confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p><span id="removeSolutionMessage"></span></p>
+                <p>
+                    <strong>Are you sure you want to continue?</strong>
+                </p>
+                @using (Html.BeginForm("Delete", "Snippets", FormMethod.Post, new { @id = "delete-form", role = "form" }))
+                {
+                    @Html.Hidden("selectedSnippetID", "-1", new { @id = "selectedSnippetID" })
+
+                    @Html.AntiForgeryToken()
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="$('#delete-form').submit();">Yes, remove this snippet.</button>
+                <button type="button" class="btn btn-primary" onclick="$('#deleteConfirmationModal').modal('hide')">No, do not delete.</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/plug-ins/be7019ee387/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" language="javascript" src="//cdn.datatables.net/colreorder/1.1.1/js/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').DataTable({
+                "dom": 'Rlfrtip'
+            });
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+                $('*[data-target="#deleteConfirmationModal"]').click(function()
+                {
+                    var $this = $(this);
+                    var snippetName = $this.attr('data-name');
+                    var snippetID = $this.attr('data-id');
+                    $('#selectedSnippetID').val(snippetID);
+                    $('#removeSolutionMessage').text("You're about to remove Snippet " + snippetName + " from BrowseDotNET");
+                })
+        });
+    </script>
+}

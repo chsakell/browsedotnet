@@ -1,0 +1,69 @@
+﻿<ul class="nav navbar-nav">
+
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Register<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="@Url.Action("DotNetSolution", "Register")">
+                    <i class="glyphicon glyphicon-qrcode"></i>
+                    <span>Solution</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("CodeSnippet", "Register")">
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                    <span>Code Snippet</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ScanSolutions", "Register")">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <span>Scan Solutions</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Open<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="@Url.Action("Index", "Solutions")">
+                    <i class="glyphicon glyphicon-qrcode"></i>
+                    <span>Solution</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Snippets")">
+                    <i class="glyphicon glyphicon-list-alt"></i>
+                    <span>Code Snippet</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">BrowseDotNET<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="@Url.Action("About", "Home")" target="_blank">
+                    <i class="glyphicon glyphicon-info-sign"></i>
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("FAQ", "Home")">
+                    <i class="glyphicon glyphicon-question-sign"></i>
+                    <span>FAQs</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+@using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "navbar-form navbar-left", role = "search" }))
+{
+    <div class="form-group">
+        @Html.TextBox("searchquery", "", new { @id = "searchquery", @class = "form-control input-sm", style = "width:200px", placeholder = "Search keys.." })
+    </div>
+}

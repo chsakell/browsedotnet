@@ -1,0 +1,396 @@
+﻿body {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+    padding-bottom: 40px;
+    color: #5a5a5a;
+}
+
+
+
+/* CUSTOMIZE THE NAVBAR
+-------------------------------------------------- */
+
+/* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+}
+
+    /* Flip around the padding for proper display in narrow viewports */
+    .navbar-wrapper .container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .navbar-wrapper .navbar {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    height: 290px;
+    margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 10;
+    padding-bottom: 65px;
+}
+
+.caption-image {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+    height: 290px;
+    background-color: #007BA3;
+}
+
+.carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 290px;
+}
+
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Pad the edges of the mobile views a bit */
+.marketing {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .col-lg-4 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .marketing h2 {
+        font-weight: normal;
+    }
+
+    .marketing .col-lg-4 p {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+    margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+
+    /* Remove the edge padding needed for mobile */
+    .marketing {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    /* Navbar positioning foo */
+    .navbar-wrapper {
+        margin-top: 20px;
+    }
+
+        .navbar-wrapper .container {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .navbar-wrapper .navbar {
+            padding-right: 0;
+            padding-left: 0;
+        }
+
+        /* The navbar becomes detached from the top, so we round the corners */
+        .navbar-wrapper .navbar {
+            border-radius: 4px;
+        }
+
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 20px;
+        font-size: 21px;
+        line-height: 1.4;
+    }
+
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 992px) {
+    .featurette-heading {
+        margin-top: 120px;
+    }
+}
+
+.container {
+    padding-left: 55px;
+}
+
+.container-full {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.padbottom {
+    padding-bottom: 10px;
+}
+
+/* Register/DOtNetSolution 
+    -------------------------------*/
+#FilePath {
+    max-width: 380px;
+}
+
+
+/* Code Snippets 
+    -------------------------------*/
+/*.com {
+    color: #008000;
+}
+
+.str, .tag {
+    color: #A31515;
+}
+
+.kwd, .atv {
+    color: #0000FF;
+}
+
+.typ {
+    color: #2B91AF;
+}
+
+.lit, .atn {
+    color: #FF0000;
+}
+
+.pun, .pln {
+    color: #000000;
+}
+
+.dec {
+    color: #800080;
+}*/
+
+/* Tomorrow Theme */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+.prettyprint {
+    background: white;
+    font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.pln {
+    color: #4d4d4c;
+}
+
+@media screen {
+    .str {
+        color: #718c00;
+    }
+
+    .kwd {
+        color: #8959a8;
+    }
+
+    .com {
+        color: #8e908c;
+    }
+
+    .typ {
+        color: #4271ae;
+    }
+
+    .lit {
+        color: #f5871f;
+    }
+
+    .pun {
+        color: #4d4d4c;
+    }
+
+    .opn {
+        color: #4d4d4c;
+    }
+
+    .clo {
+        color: #4d4d4c;
+    }
+
+    .tag {
+        color: #c82829;
+    }
+
+    .atn {
+        color: #f5871f;
+    }
+
+    .atv {
+        color: #3e999f;
+    }
+
+    .dec {
+        color: #f5871f;
+    }
+
+    .var {
+        color: #c82829;
+    }
+
+    .fun {
+        color: #4271ae;
+    }
+}
+
+@media print, projection {
+    .str {
+        color: #006600;
+    }
+
+    .kwd {
+        color: #006;
+        font-weight: bold;
+    }
+
+    .com {
+        color: #600;
+        font-style: italic;
+    }
+
+    .typ {
+        color: #404;
+        font-weight: bold;
+    }
+
+    .lit {
+        color: #004444;
+    }
+
+    .pun, .opn, .clo {
+        color: #444400;
+    }
+
+    .tag {
+        color: #006;
+        font-weight: bold;
+    }
+
+    .atn {
+        color: #440044;
+    }
+
+    .atv {
+        color: #006600;
+    }
+}
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* IE indents via margin-left */
+li.L0,
+li.L1,
+li.L2,
+li.L3,
+li.L4,
+li.L5,
+li.L6,
+li.L7,
+li.L8,
+li.L9 {
+    /* */
+}
+
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 {
+    /* */
+}

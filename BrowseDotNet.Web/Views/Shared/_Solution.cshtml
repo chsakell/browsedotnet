@@ -1,0 +1,11 @@
+﻿@model BrowseDotNet.Web.Models.SolutionViewModel
+
+<div class="col-md-4">
+    <strong>@Model.Name</strong>
+    <p>
+        <h4>@Model.SolutionTypeType</h4>
+        @Model.Description
+    </p>
+    <p><a class="btn btn-primary btn-sm" href="@Url.Action("Open","Solutions", new { id = Model.ID})">Open</a></p>
+    <hr/>
+</div>

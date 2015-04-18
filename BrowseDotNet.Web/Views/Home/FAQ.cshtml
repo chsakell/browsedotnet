@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "FAQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">FAQs</li>
+        </ol>
+        <h2>Frequently asked questions  for BrowseDotNET</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <section>
+                <div>
+                    <p>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionOne">
+                                            Root path directory is not valid in Scan directories. Why?
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Make sure you enter a valid directory path and that the path ends with slash (\)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionTwo">
+                                            Which child directories to check in scanning?
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionTwo" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        Don't check unnecessary folders that you know there is no .sln file there. Make sure though, 
+                                        that the folder which doesn contain the solution file is checked. 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionThree">
+                                            Available Programming Languages and Solution types. Where they come from?
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionThree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        At the time you create the database, BrowseDotNET will seed some initial languages and 
+                                        solution types so you can start register components. You can always add more or change the
+                                        initial values from the settings page. 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionFour">
+                                            Searching. How does it work?
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        When registering either a .NET solution or a code snippet you enter keys to be bound. Those keys are used
+                                        for searching among both solutions and code snippets which means a single key record in the database can be
+                                        matched both with solutions and code snippets. In order to have better searching performance, try not to 
+                                        mispell the keys you enter. For example the key <i>dependency injection</i> and the misspelled one <i>dpendency injection</i>
+                                        are two different keys. The same applies for the code snippets group names.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,14 @@
+﻿@using BrowseDotNet.Web.Infrastructure.Alerts;
+
+@if (TempData.GetAlerts().Any())
+{
+    <div class="container" style="padding-top: 10px;">
+        @foreach (var alert in TempData.GetAlerts())
+        {
+            <div class="alert @alert.AlertClass alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                @alert.Message
+            </div>
+        }
+    </div>
+}

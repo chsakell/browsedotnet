@@ -1,0 +1,90 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "BrowseDotNET";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <h2>Select directories to be scanned <small>BrowseDotNET will search for .NET Solutions.</small></h2>
+    </div>
+
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>Register</li>
+        <li class="active">Scan Directories</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h4>Root path directory selection.</h4>
+            <hr />
+            @using (Html.BeginForm("ScanDirectories", "Register", FormMethod.Post))
+            {
+                <div id="demoTree">
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="submit" value="Scan and Register" id="btnSubmit" class="btn btn-primary btn-sm" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-4">
+            <section>
+                <h4>Instructions.</h4>
+                <hr />
+                <div>
+                    <p>
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionOne">
+                                            Hints
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Try to avoid checking folders that you already know there is no point to be scanned for .NET solutions.
+                                        For example, BrowseDotNET will ignone any <i>packages</i> folder because it's certain that it won't find .sln files
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#questionTwo">
+                                            Usage
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="questionTwo" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        BrowseDotNET will register any .NET Solution found on the checked folders with solution's name. You will have to find those
+                                        solutions <a href="@Url.Action("Index","Solutions")" target="_blank">here</a> where you will be able to edit each one of them.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        treeModel = @Html.Raw(Model);
+    </script>
+    <script src="@Url.Content("~/content/scripts/jquery.jstree.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/content/scripts/index.js")" type="text/javascript"></script>
+}

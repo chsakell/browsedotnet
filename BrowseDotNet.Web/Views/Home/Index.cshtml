@@ -1,0 +1,79 @@
+﻿@model IEnumerable<BrowseDotNet.Web.Models.SolutionViewModel>
+
+@{
+    ViewBag.Title = "BrowseDotNET";
+}
+
+<div class="container-full">
+    <div id="myCarousel" class="carousel" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1><img src="~/Content/images/solution-registration.png" class="caption-image" />Solution registration.</h1>
+                        <p>Register all your .NET Solutions and access all of them in one place.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1><img src="~/Content/images/snippet-registration.png" class="caption-image" />Snippet registration.</h1>
+                        <p>Save as many code snippets you wish, language indepentend, and access them in on click.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1><img src="~/Content/images/scan-computer.png" class="caption-image" />Solution scanning.</h1>
+                        <p>Scan directories for .NET Solutions BrowseDotNET register them for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+</div>
+
+@if (Model != null && Model.Count() > 0)
+{
+    <div class="container">
+        @foreach(var solution in Model)
+        {
+            @Html.Partial("_Solution", solution)
+        }
+    </div>
+}
+
+<div class="container">
+    <div class="col-md-4">
+        <h2>BrowseDotNET</h2>
+        <p>
+            Manage your .NET Solutions and code snippets on your PC. Create references to your projects and code samples
+            and you will be able to access them with a few clicks.
+        </p>
+        <p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Search Engine</h2>
+        <p>
+            Use the top level Search textbox to search .NET Solution or Code Snippets by <i>Name, Keys or Description</i>
+        </p>
+        <p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Increase Productivity</h2>
+        <p>
+            BrowseDotNET helps you increase productivity in your work. You will never have to search in the internet for the same
+            code snippets over and over again. It's a powerfull tool for every .NET Developer.
+        </p>
+        <p><a class="btn btn-default" href="#">Learn more &raquo;</a></p>
+    </div>
+</div>
