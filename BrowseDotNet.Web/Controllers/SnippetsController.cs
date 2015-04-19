@@ -12,6 +12,7 @@ using BrowseDotNet.Web.Infrastructure.Alerts;
 
 namespace BrowseDotNet.Web.Controllers
 {
+    [Authorize]
     public class SnippetsController : Controller
     {
         private readonly ISnippetService _snippetService;

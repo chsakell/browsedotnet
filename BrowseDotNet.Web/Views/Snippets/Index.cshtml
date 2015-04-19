@@ -51,7 +51,7 @@
                 <td>
                     @if (!string.IsNullOrEmpty(item.Website))
                     {
-                        <a href="@item.Website" target="_blank">@item.Website</a>
+                        <a href="@item.Website" target="_blank">@(String.Format("{0}{1}", item.Website.Substring(0, item.Website.Length > 15 ? 15 : item.Website.Length - 1), "..."))</a>
                     }
                     else
                     { <span>Not available</span>
@@ -61,7 +61,7 @@
                     @Html.DisplayFor(modelItem => item.ProgrammingLanguageName)
                 </td>
                 <td>
-                    @Html.ActionLink("Code","Code", "Snippets", new { id = item.ID }, new { @class = "btn btn-primary btn-xs" })
+                    @Html.ActionLink("Code", "Code", "Snippets", new { id = item.ID }, new { @class = "btn btn-primary btn-xs" })
                     <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteConfirmationModal" data-name="@item.Name" data-id="@item.ID">Delete</a>
                 </td>
             </tr>
@@ -109,14 +109,13 @@
 
             $('[data-toggle="tooltip"]').tooltip();
 
-                $('*[data-target="#deleteConfirmationModal"]').click(function()
-                {
-                    var $this = $(this);
-                    var snippetName = $this.attr('data-name');
-                    var snippetID = $this.attr('data-id');
-                    $('#selectedSnippetID').val(snippetID);
-                    $('#removeSolutionMessage').text("You're about to remove Snippet " + snippetName + " from BrowseDotNET");
-                })
+            $('*[data-target="#deleteConfirmationModal"]').click(function () {
+                var $this = $(this);
+                var snippetName = $this.attr('data-name');
+                var snippetID = $this.attr('data-id');
+                $('#selectedSnippetID').val(snippetID);
+                $('#removeSolutionMessage').text("You're about to remove Snippet " + snippetName + " from BrowseDotNET");
+            })
         });
     </script>
 }

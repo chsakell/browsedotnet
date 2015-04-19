@@ -54,7 +54,7 @@
                 <td>
                     @if (!string.IsNullOrEmpty(item.Website))
                     {
-                        <a href="@item.Website" target="_blank">@item.Website</a>
+                        <a href="@item.Website" target="_blank">@(String.Format("{0}{1}", item.Website.Substring(0, item.Website.Length > 15 ? 15 : item.Website.Length - 1), "..."))</a>
                     }
                     else
                     { <span>Not available</span>
