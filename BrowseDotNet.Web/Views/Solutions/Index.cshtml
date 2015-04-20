@@ -64,7 +64,8 @@
                     @Html.DisplayFor(modelItem => item.SolutionTypeType)
                 </td>
                 <td>
-                    @Html.ActionLink("Open", "Open", new { id = item.ID }, new { @class = "btn btn-primary btn-xs" })
+                    @Html.ActionLink("Open", "Open", new { id = item.ID, IsAdmin = false }, new { @class = "btn btn-primary btn-xs" })
+                    @Html.ActionLink("Admin", "Open", new { id = item.ID, IsAdmin = true }, new { @class = "btn btn-warning btn-xs" })
                     <a href="#" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteConfirmationModal" data-name="@item.Name" data-id="@item.ID">Delete</a>
                 </td>
             </tr>

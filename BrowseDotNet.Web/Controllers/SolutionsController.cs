@@ -41,11 +41,16 @@ namespace BrowseDotNet.Web.Controllers
 
         public ActionResult Open(int ID)
         {
+            bool isAdmin = new bool();
+            if (Request.QueryString["IsAdmin"] != null)
+                bool.TryParse(Request.QueryString["IsAdmin"], out isAdmin);
             try
             {
                 var solution = _solutionService.GetSolution(ID);
                 if (solution != null)
-                    _utilityService.OpenDotNETSolution(solution.FilePath);
+                {
+                    _utilityService.OpenDotNETSolution(solution.FilePath, isAdmin);
+                }
 
                 try
                 {

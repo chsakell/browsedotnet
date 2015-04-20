@@ -50,13 +50,25 @@ namespace BrowseDotNet.Service
             return searchKeys;
         }
 
-        public void OpenDotNETSolution(string filePath)
+        public void OpenDotNETSolution(string filePath, bool runAsAdmin)
         {
             try
             {
                 if (File.Exists(filePath))
                 {
-                    Process.Start(filePath);
+                    var process = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            Arguments = "\"" + filePath + "\"",
+                            FileName = "devenv.exe",
+                            UseShellExecute = true,
+                            Verb = runAsAdmin == true ? "runas" : string.Empty
+                        }
+                    };
+
+                    process.Start();
+
                 }
                 else
                     throw new Exception("Solution file path " + filePath + " doesn't exists. Update solution's info if moved.");
@@ -131,7 +143,7 @@ namespace BrowseDotNet.Service
     {
         ICollection<SearchKey> ResolveKeys(string keys);
 
-        void OpenDotNETSolution(string filePath);
+        void OpenDotNETSolution(string filePath, bool runAsAdmin);
 
         string GetCommaSeparatedKeys(ICollection<SearchKey> keys);
 
