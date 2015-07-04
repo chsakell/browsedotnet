@@ -6,6 +6,9 @@
         <h4>@Model.SolutionTypeType</h4>
         @Model.Description
     </p>
-    <p><a class="btn btn-primary btn-sm" href="@Url.Action("Open","Solutions", new { id = Model.ID})">Open</a></p>
-    <hr/>
+    <p>
+        <a class="btn btn-primary btn-sm" href="@Url.Action("Open","Solutions", new { id = Model.ID})">Open</a>
+        @Html.ActionLink("Admin", "Open", "Solutions", new { id = Model.ID, IsAdmin = true }, new { @class = "btn btn-warning btn-sm" })
+    </p>
+    <hr />
 </div>
